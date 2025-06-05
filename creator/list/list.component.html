@@ -1,0 +1,72 @@
+<!-- <table class="table table-striped">
+	<thead>
+	  <tr>
+		<th scope="col">  id</th>
+		<th scope="col"> fullname</th>
+		<th scope="col">  username</th>
+		<th scope="col">  email</th>
+		 <th scope="col">  password</th> 
+	<th></th> 
+	</tr>
+	</thead>
+	<tbody>
+		@for(creator of creators(); track creator.id){
+			<tr>
+		<td>{{creator.id}}</td>
+		<td>{{creator.fullname}}</td>
+		<td>{{creator.username}}</td>
+		<td>{{creator.email}}</td>
+		 <td>{{creator.password}}</td> 
+		<td><img src="{{creator.photo}}" class="photo"></td>
+		<td>
+			<button class="btn-delete" (click)="openDeleteModal(creator)">Supprimer</button>
+		  </td>
+		  
+		  <td>
+			<button (click)="updateCreator(creator)" type="button" class="btn-update">Modifier</button>
+		  </td>
+		  
+	</tr>
+	}
+	</tbody>
+  </table> -->
+
+  <div class="quizvm-container">
+	<h2>Creators Management</h2>
+	
+	<div class="search-bar">
+	  <input type="text" placeholder="Search by name..." [(ngModel)]="searchTerm" 
+			 (input)="filterCreators()">
+	</div>
+  
+	<table class="quizvm-table">
+	  <thead>
+		<tr>
+		  <th>ID</th>
+		  <th>Full Name</th>
+		  <th>Email</th>
+		  <th>Status</th>
+		  <th>Action</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		<tr *ngFor="let creator of filteredCreators">
+		  <td>{{creator.id}}</td>
+		  <td>{{creator.fullname}}</td>
+		  <td>{{creator.email}}</td>
+		  <td>
+			<label class="quizvm-switch">
+			  <input type="checkbox" [checked]="creator.active" 
+					 (change)="toggleStatus(creator)">
+			  <span class="slider round"></span>
+			</label>
+		  </td>
+		  <td>
+			<button (click)="deleteCreator(creator.id)" class="delete-btn">
+			  <i class="fas fa-trash-alt"></i>
+			</button>
+		  </td>
+		</tr>
+	  </tbody>
+	</table>
+  </div>

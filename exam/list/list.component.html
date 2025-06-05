@@ -1,0 +1,26 @@
+<button type="button" class="btn btn-primary" (click)="openModal()">Add</button>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">title</th>
+        <th scope="col">description</th>
+        <th scope="col">passingScore</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+         @for (exam of exams; track exam.id) {
+      <tr>
+        <td>{{exam.id}}</td>
+        <td>{{exam.title}}</td>
+        <td>{{exam.description}}</td>
+        <td>{{exam.passingScore}}</td>
+        <td><img src="{{exam.photo}}" class="photo" ></td>
+        <td><img src="assets/images/deleteIcon.ico" class="actionIcon" ></td>
+        <td><img src="assets/images/updateIcon.png" class="actionIcon" (click)="updateExam(exam)"></td>
+      </tr>
+         }
+  </tbody>
+   </table>
